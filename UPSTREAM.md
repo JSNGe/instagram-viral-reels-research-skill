@@ -21,6 +21,7 @@ preserved in both `README.md` and `skills/viral-outliers/SKILL.md`.
 3. Clarified that helper scripts should run from a separate output directory while being resolved
    relative to the installed `SKILL.md`.
 4. Added dependency checks, a Codex invocation example, and operational caveats to the README.
+5. Added a macOS-safe fallback when GNU `timeout`/`gtimeout` is unavailable.
 
 The original research thresholds, read-only Instagram constraint, transcription settings, script
 templates, and reference files are otherwise unchanged.

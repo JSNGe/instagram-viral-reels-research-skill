@@ -30,7 +30,15 @@ return JSON.stringify({
   cap:((m.caption&&m.caption.text)||"").replace(/\s+/g," "),
   url:m.video_versions&&m.video_versions[0].url});})()'
 
-timeout 90 opencli browser "$SESSION" eval "$JS" 2>/dev/null | tail -1 > "meta_$SC.json"
+if command -v timeout >/dev/null 2>&1; then
+  timeout 90 opencli browser "$SESSION" eval "$JS" 2>/dev/null | tail -1 > "meta_$SC.json"
+elif command -v gtimeout >/dev/null 2>&1; then
+  gtimeout 90 opencli browser "$SESSION" eval "$JS" 2>/dev/null | tail -1 > "meta_$SC.json"
+else
+  # macOS does not include timeout by default. OpenCLI has its own browser-operation timeout,
+  # so keep the workflow usable without requiring GNU coreutils.
+  opencli browser "$SESSION" eval "$JS" 2>/dev/null | tail -1 > "meta_$SC.json"
+fi
 
 python3 - "$SC" "$N" "$UA" <<'PY'
 import sys, json, io, os, subprocess

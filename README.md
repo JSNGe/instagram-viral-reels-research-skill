@@ -135,11 +135,14 @@ buscame reels virales de mi nicho y escribeme el guion
 | **ffmpeg** | Frame extraction and audio |
 | **faster-whisper** | Transcription. `pip install faster-whisper` |
 | **Chrome** | With the OpenCLI extension loaded and connected |
+| **curl + Python 3** | Used by the bundled download helper; both ship with current macOS setups |
 
 On macOS, install `ffmpeg` with Homebrew if needed (`brew install ffmpeg`) and install the Python
 package with `python3 -m pip install faster-whisper`. `agent-reach` and `OpenCLI` have their own
 installation instructions at the linked upstream projects. Instagram discovery depends on a live,
 logged-in Chrome session and may stop working when Instagram changes private web endpoints.
+The bundled Codex helper accepts either `timeout` or Homebrew's `gtimeout`, but falls back to
+OpenCLI's own browser timeout when neither command is installed (the normal macOS case).
 
 ```bash
 agent-reach doctor --json     # which backend serves each platform
