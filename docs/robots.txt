@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://w-avw.github.io/instagram-viral-reels-research-claude-skill/sitemap.xml
